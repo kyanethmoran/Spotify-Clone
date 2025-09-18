@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 
+import userRoutes from "./routes/user.route.js";
+
 // need to be able to read port value
 dotenv.config();
 
