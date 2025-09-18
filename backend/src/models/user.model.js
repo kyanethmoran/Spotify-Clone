@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // create a schema
-const userSchema = new mongoose.SchemaType(
+const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
