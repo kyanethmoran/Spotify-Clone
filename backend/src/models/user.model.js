@@ -19,3 +19,5 @@ const userSchema = new mongoose.SchemaType(
   },
   { timestamps: true }
 ); // createdAt, updatedAt
+
+export const User = mongoose.model("User", userSchema);
