@@ -12,6 +12,11 @@ const PORT = process.env.PORT;
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/media", mediaRoutes);
+app.use("/api/albums", albumRoutes);
+app.use("/api/stats", statRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
