@@ -1,0 +1,21 @@
+import mongoose from "mongoose";
+
+// create a schema
+const userSchema = new mongoose.SchemaType(
+  {
+    fullName: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    clerkId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+  },
+  { timestamps: true }
+); // createdAt, updatedAt
