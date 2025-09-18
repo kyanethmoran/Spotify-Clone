@@ -8,6 +8,9 @@ const app = express();
 // get port from env
 const PORT = process.env.PORT;
 
+// Routes
+app.use("/api/users", userRoutes);
+
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
 });
