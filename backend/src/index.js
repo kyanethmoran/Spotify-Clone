@@ -2,6 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
 
+// clerk: attaches auth object if cookiers/headers has JWT
+import { clerkMiddleware } from "@clerk/express";
+
 // import routes
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
@@ -19,6 +22,9 @@ const PORT = process.env.PORT;
 
 // to parse req.body
 app.use(express.json());
+
+// add auth, allows for req obj => req.auth.userId (check doc for all options/ session properties)
+app.use(clerkMiddleware());
 
 // Routes
 app.use("/api/users", userRoutes);
