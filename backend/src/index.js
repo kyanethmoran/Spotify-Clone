@@ -17,6 +17,9 @@ const app = express();
 // get port from env
 const PORT = process.env.PORT;
 
+// to parse req.body
+app.use(express.json());
+
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
