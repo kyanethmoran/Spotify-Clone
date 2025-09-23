@@ -23,7 +23,7 @@ const PORT = process.env.PORT;
 // to parse req.body
 app.use(express.json());
 
-// add auth, allows for req obj => req.auth.userId (check doc for all options/ session properties)
+// add auth, allows for req obj => req.auth().userId (check doc for all options/ session properties) (req.auth is depreciated use req.auth().)
 app.use(clerkMiddleware());
 
 // Routes
