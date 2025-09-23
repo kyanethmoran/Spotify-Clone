@@ -26,6 +26,6 @@ export const requireAdmin = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.log("error occured when trying to validate for admin rights");
+    return res.status(500).json({ messsage: "Internal server error", error });
   }
 };
