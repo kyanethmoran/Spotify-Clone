@@ -34,6 +34,13 @@ app.use("/api/media", mediaRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statRoutes);
 
+// check
+console.log("Publishable Key:", process.env.CLERK_PUBLISHABLE_KEY);
+console.log(
+  "Secret Key:",
+  process.env.CLERK_SECRET_KEY ? "Loaded " : "Missing "
+);
+
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
   connectDB();
