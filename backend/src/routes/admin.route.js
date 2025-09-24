@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
+import { createMedia, deleteMedia } from "../controller/admin.controller.js";
 
 const router = Router();
 
