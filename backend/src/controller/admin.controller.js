@@ -61,4 +61,22 @@ export const createMedia = async (req, res, next) => {
 };
 
 // admin should be able to delete media item by targeting id
-export const deleteMedia = async (req, res, next) => {};
+export const deleteMedia = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const media = await Media.findById(id);
+
+    // if media belongs to an album update the album array
+    if (media.albumId) {
+      await Album.findByIdAndUpdate(media.albumId, {
+        $pull: { medias: media._id },
+      });
+    }
+
+    await Media.findByIdAndDelete(id);
+  } catch (error) {
+    console.log("Error in deleteMedia controller");
+    next(error);
+  }
+};
