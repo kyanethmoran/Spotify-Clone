@@ -4,6 +4,9 @@ import { connectDB } from "./lib/db.js";
 
 // clerk: attaches auth object if cookiers/headers has JWT
 import { clerkMiddleware } from "@clerk/express";
+// express file upload
+import fileUpload from "express-fileupload";
+import path from "path";
 
 // import routes
 import userRoutes from "./routes/user.route.js";
@@ -16,6 +19,7 @@ import statRoutes from "./routes/stat.route.js";
 // need to be able to read port value
 dotenv.config();
 
+const __dirname = path.resolve;
 const app = express();
 // get port from env
 const PORT = process.env.PORT;
@@ -25,6 +29,18 @@ app.use(express.json());
 
 // add auth, allows for req obj => req.auth().userId (check doc for all options/ session properties) (req.auth is depreciated use req.auth().)
 app.use(clerkMiddleware());
+
+// for express fileupload
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: Path2D.join(__dirname, "temp"),
+    createParentPath: true,
+    limits: {
+      fileSize: 10 * 1024 * 1024, //10MB max file size
+    },
+  })
+);
 
 // Routes
 app.use("/api/users", userRoutes);
