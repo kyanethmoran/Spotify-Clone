@@ -46,12 +46,13 @@ export const createMedia = async (req, res, next) => {
 
     await media.save();
 
+    /*  no need to push into Album.media - Media already points back to the album  */
     // if the media belongs to an album update that album array
-    if (albumId) {
-      await Album.findByIdAndUpdate(albumId, {
-        $push: { medias: media._id },
-      });
-    }
+    // if (albumId) {
+    //   await Album.findByIdAndUpdate(albumId, {
+    //     $push: { medias: media._id },
+    //   });
+    // }
 
     res.status(200).json(media);
   } catch (error) {
