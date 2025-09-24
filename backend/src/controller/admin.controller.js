@@ -1,10 +1,20 @@
 import { Media } from "../models/media.model.js";
 import { Album } from "../models/album.model.js";
+import cloudinary from "../lib/cloudinary.js";
 
-// test simple connection to admin route and controller
-// export const getAdmin = (req, res) => {
-//   res.send("Admin route with GET method");
-// };
+// helper function for cloudinary uploads
+const uploadToCloudinary = async (file) => {
+  try {
+    const result = await cloudinary.uploader.upload(file.tempFilePath, {
+      resource_type: auto,
+    });
+
+    return result.secure_url;
+  } catch (error) {
+    console.log("Errow in uploadToCloudinary", error);
+    throw new Error("Error in uploading to cloudinary");
+  }
+};
 
 // admin should be able to create media (todo: upload image, audiofile, media info)
 export const createMedia = async (req, res, next) => {
@@ -20,6 +30,10 @@ export const createMedia = async (req, res, next) => {
     const { title, artist, albumId, duration } = req.body;
     const audioFile = req.files.audioFile;
     const imageFile = req.files.imageFile;
+
+    // upload to cloudinary
+    const audioUrl = await uploadToCloudinary(audioFile);
+    const imageUrl = await uploadToCloudinary(imageFile);
 
     const media = new Media({
       title,
