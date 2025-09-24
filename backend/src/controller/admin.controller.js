@@ -82,4 +82,13 @@ export const deleteMedia = async (req, res, next) => {
 };
 
 // admin should be able to create an album of media
-export const createAlbum = async (req, res, next) => {};
+export const createAlbum = async (req, res, next) => {
+  try {
+  } catch (error) {}
+};
+
+// admin should be able to delete an album of media
+export const deleteAlbum = async (req, res, next) => {
+  try {
+  } catch (error) {}
+};

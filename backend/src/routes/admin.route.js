@@ -17,4 +17,7 @@ router.delete("media/:id", protectRoute, requireAdmin, deleteMedia);
 // allow admin to create an album
 router.post("/albums", protectRoute, requireAdmin, createAlbum);
 
+// allow admin to delete album by targeting albumId
+router.delete("/albums/:id", protectRoute, requireAdmin, createAlbum);
+
 export default router;
