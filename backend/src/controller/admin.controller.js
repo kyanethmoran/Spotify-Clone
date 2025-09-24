@@ -84,7 +84,23 @@ export const deleteMedia = async (req, res, next) => {
 // admin should be able to create an album of media
 export const createAlbum = async (req, res, next) => {
   try {
-  } catch (error) {}
+    const { title, creator, releaseYear } = req.body;
+    const { imageFile } = req.files;
+
+    const imageUrl = await uploadToCloudinary(imageFile);
+
+    const album = new Album({
+      title,
+      creator,
+      imageUrl,
+      releaseYear,
+    });
+
+    res.status(200).json(album);
+  } catch (error) {
+    console.log("Error in createAlbum", error);
+    next(error);
+  }
 };
 
 // admin should be able to delete an album of media
