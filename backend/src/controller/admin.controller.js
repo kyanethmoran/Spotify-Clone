@@ -103,8 +103,29 @@ export const createAlbum = async (req, res, next) => {
   }
 };
 
-// admin should be able to delete an album of media
+// admin should be able to delete an album WITHOUT deleting the media inside, just detaching the albumId from the media
 export const deleteAlbum = async (req, res, next) => {
   try {
-  } catch (error) {}
+    const { id } = req.params;
+
+    // check for album existence
+    const album = await Album.findById(id);
+    if (!album) {
+      return res.status(404).json({ message: "Album not found." });
+    }
+
+    // detach all media from album
+    const detachMedia = await Media.updateMany(
+      { albumId: id },
+      { $set: { albumId: null } }
+    );
+
+    // delete the album itself
+    await Album.findByIdAndDelete(id);
+
+    return res.status(200).json({ message: "Album has been deleted" });
+  } catch (error) {
+    console.log("Error in deleteAlbum", error);
+    next(error);
+  }
 };
