@@ -1,6 +1,10 @@
 import { Router } from "express";
 import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
-import { createMedia, deleteMedia } from "../controller/admin.controller.js";
+import {
+  createMedia,
+  deleteMedia,
+  createAlbum,
+} from "../controller/admin.controller.js";
 
 const router = Router();
 
@@ -9,5 +13,8 @@ router.post("/media", protectRoute, requireAdmin, createMedia);
 
 // allow admin to delete a peice of media based on id
 router.delete("media/:id", protectRoute, requireAdmin, deleteMedia);
+
+// allow admin to create an album
+router.post("/albums", protectRoute, requireAdmin, createAlbum);
 
 export default router;
