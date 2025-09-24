@@ -7,6 +7,6 @@ const router = Router();
 router.post("/media", protectRoute, requireAdmin, createMedia);
 
 // allow admin to delete a peice of media based on id
-router.delete("media", protectRoute, requireAdmin, deleteMedia);
+router.delete("media/:id", protectRoute, requireAdmin, deleteMedia);
 
 export default router;
