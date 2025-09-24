@@ -59,3 +59,6 @@ export const createMedia = async (req, res, next) => {
     next(error);
   }
 };
+
+// admin should be able to delete media item by targeting id
+export const deleteMedia = async (req, res, next) => {};
