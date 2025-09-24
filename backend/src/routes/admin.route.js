@@ -8,6 +8,6 @@ const router = Router();
 // router.get("/", getAdmin);
 
 // uses protected route and requires admin status, only admin can access
-router.get("/", protectRoute, requireAdmin, createMedia);
+router.post("/media", protectRoute, requireAdmin, createMedia);
 
 export default router;
