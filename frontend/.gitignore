@@ -24,5 +24,6 @@ dist-ssr
 *.sw?
 
 #safe guard
+.env.local
 .env
 
