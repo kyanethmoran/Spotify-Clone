@@ -19,7 +19,7 @@ import statRoutes from "./routes/stat.route.js";
 // need to be able to read port value
 dotenv.config();
 
-const __dirname = path.resolve;
+const __dirname = path.resolve();
 const app = express();
 // get port from env
 const PORT = process.env.PORT;
@@ -34,7 +34,7 @@ app.use(clerkMiddleware());
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: Path2D.join(__dirname, "temp"),
+    tempFileDir: path.join(__dirname, "tmp"),
     createParentPath: true,
     limits: {
       fileSize: 10 * 1024 * 1024, //10MB max file size
@@ -52,14 +52,12 @@ app.use("/api/stats", statRoutes);
 
 // error handler
 app.use((err, req, res, next) => {
-  res
-    .status(500)
-    .json({
-      message:
-        process.env.NODE_ENV === "production"
-          ? "Internal server error"
-          : err.message,
-    });
+  res.status(500).json({
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Internal server error"
+        : err.message,
+  });
 });
 
 app.listen(PORT, () => {
