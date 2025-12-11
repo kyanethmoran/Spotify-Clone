@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import { axiosInstance } from "@/lib/axios";
+import { Loader } from "lucide-react";
 
 const updateApiToken = (token: string | null) => {
   if (token) {
@@ -10,7 +11,7 @@ const updateApiToken = (token: string | null) => {
   }
 };
 
-export const AuthProvider = () => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { getToken, userId } = useAuth();
   const [loading, setLoading] = useState(true);
 
@@ -34,5 +35,12 @@ export const AuthProvider = () => {
     initAuth();
   }, [getToken]);
 
-  return <div>AuthProvider</div>;
+  if (loading)
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <Loader className="size=8 text-amber-500 animate-spin" />
+      </div>
+    );
+
+  return <>{children}</>;
 };
