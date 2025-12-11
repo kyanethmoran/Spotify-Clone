@@ -11,7 +11,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/authCallbackPage" element={<AuthCallbackPage />} />
+        <Route path="/authCallback" element={<AuthCallbackPage />} />
         <Route />
         <Route />
         <Route />
