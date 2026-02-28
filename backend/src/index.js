@@ -7,6 +7,8 @@ import { clerkMiddleware } from "@clerk/express";
 // express file upload
 import fileUpload from "express-fileupload";
 import path from "path";
+// look at cors errors to debug
+import cors from "cors";
 
 // import routes
 import userRoutes from "./routes/user.route.js";
@@ -24,6 +26,14 @@ const app = express();
 // get port from env
 const PORT = process.env.PORT;
 
+// look at cors errors to debug
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
+);
+
 // to parse req.body
 app.use(express.json());
 
@@ -39,7 +49,7 @@ app.use(
     limits: {
       fileSize: 10 * 1024 * 1024, //10MB max file size
     },
-  })
+  }),
 );
 
 // Routes
