@@ -19,7 +19,7 @@ function App() {
             <AuthenticateWithRedirectCallback signUpForceRedirectUrl="/auth-callback" />
           }
         />
-        <Route path="/authCallback" element={<AuthCallbackPage />} />
+        <Route path="/auth-callback" element={<AuthCallbackPage />} />
         <Route />
         <Route />
         <Route />
