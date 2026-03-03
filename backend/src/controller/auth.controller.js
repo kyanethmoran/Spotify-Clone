@@ -5,12 +5,12 @@ export const authCall = async (req, res, next) => {
     const { id, firstName, lastName, imageUrl } = req.body;
 
     // check if the user already exists
-    const user = await User.find({ clerkId: id });
+    const user = await User.findOne({ clerkId: id });
 
     if (!user) {
       // signup
       await User.create({
-        clearkId: id,
+        clerkId: id,
         fullName: `${firstName} ${lastName}`,
         imageUrl,
       });
