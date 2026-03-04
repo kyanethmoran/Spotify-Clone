@@ -4,6 +4,7 @@ import HomePage from "./pages/home/HomePage.tsx";
 import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage.tsx";
 // import { axiosInstance } from "./lib/axios.ts";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
+import MainLayout from "./layout/MainLayout.tsx";
 // import { axiosInstance } from "./lib/axios.ts";
 
 function App() {
@@ -12,7 +13,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route
           path="/sso-callback"
           element={
@@ -20,9 +20,9 @@ function App() {
           }
         />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
-        <Route />
-        <Route />
-        <Route />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
       </Routes>
     </>
   );
