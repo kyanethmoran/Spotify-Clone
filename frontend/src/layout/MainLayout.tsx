@@ -6,7 +6,7 @@ import {
 import { Outlet } from "react-router-dom";
 
 function MainLayout() {
-  const isMoble = false;
+  const isMobile = false;
 
   return (
     <div className="h-screen bg-black text-white flex flex-col">
@@ -14,22 +14,23 @@ function MainLayout() {
         {/* left side component */}
         <ResizablePanel
           defaultSize={20}
-          minSize={isMoble ? 0 : 10}
+          minSize={isMobile ? 0 : 10}
           maxSize={30}
         >
           left side component
         </ResizablePanel>
         <ResizableHandle />
         {/* main component */}
-        <ResizablePanel maxSize={80}>
+        <ResizablePanel maxSize={80} defaultSize={isMobile ? 80 : 60}>
           <Outlet />
         </ResizablePanel>
         <ResizableHandle />
         {/* right side component */}
         <ResizablePanel
           defaultSize={20}
-          minSize={isMoble ? 0 : 10}
+          minSize={isMobile ? 0 : 10}
           maxSize={30}
+          collapsedSize={0}
         >
           right side component
         </ResizablePanel>
