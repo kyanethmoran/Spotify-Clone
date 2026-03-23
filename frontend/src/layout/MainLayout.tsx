@@ -10,7 +10,10 @@ function MainLayout() {
 
   return (
     <div className="h-screen bg-black text-white flex flex-col">
-      <ResizablePanelGroup direction="horizontal">
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="flex-1 flex h-full overflow-hidden p-2"
+      >
         {/* left side component */}
         <ResizablePanel
           defaultSize={20}
@@ -19,12 +22,18 @@ function MainLayout() {
         >
           left side component
         </ResizablePanel>
-        <ResizableHandle />
+        <ResizableHandle
+          withHandle
+          className="w-0.5 bg-orange-700 rounded-md transition-colors"
+        />
         {/* main component */}
         <ResizablePanel maxSize={80} defaultSize={isMobile ? 80 : 60}>
           <Outlet />
         </ResizablePanel>
-        <ResizableHandle />
+        <ResizableHandle
+          withHandle
+          className="w-0.5 bg-orange-700 rounded-md transition-colors"
+        />
         {/* right side component */}
         <ResizablePanel
           defaultSize={20}
