@@ -5,7 +5,7 @@ import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage.tsx";
 // import { axiosInstance } from "./lib/axios.ts";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
 import MainLayout from "./layout/MainLayout.tsx";
-// import { axiosInstance } from "./lib/axios.ts";
+import ChatPage from "./pages/chat/ChatPage.tsx";
 
 function App() {
   // Tell Clerk we are authenticated when sending requests (token from provider)
@@ -22,6 +22,7 @@ function App() {
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Route>
       </Routes>
     </>
