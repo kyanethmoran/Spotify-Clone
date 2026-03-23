@@ -4,6 +4,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Outlet } from "react-router-dom";
+import LeftSidebar from "./components/LeftSidebar";
 
 function MainLayout() {
   const isMobile = false;
@@ -20,7 +21,7 @@ function MainLayout() {
           minSize={isMobile ? 0 : 10}
           maxSize={30}
         >
-          left side component
+          <LeftSidebar />
         </ResizablePanel>
         <ResizableHandle
           withHandle
