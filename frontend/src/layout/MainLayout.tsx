@@ -24,16 +24,16 @@ function MainLayout() {
           <LeftSidebar />
         </ResizablePanel>
         <ResizableHandle
-          withHandle
-          className="w-0.5 bg-orange-700 rounded-md transition-colors"
+          // withHandle
+          className="w-0.5 mr-2 ml-2 bg-orange-900 rounded-md transition-colors"
         />
         {/* main component */}
         <ResizablePanel maxSize={80} defaultSize={isMobile ? 80 : 60}>
           <Outlet />
         </ResizablePanel>
         <ResizableHandle
-          withHandle
-          className="w-0.5 bg-orange-700 rounded-md transition-colors"
+          // withHandle
+          className="w-0.5 mr-2 ml-2 bg-orange-900 rounded-md transition-colors"
         />
         {/* right side component */}
         <ResizablePanel
