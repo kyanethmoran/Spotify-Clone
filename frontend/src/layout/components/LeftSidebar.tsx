@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { HomeIcon, Library, MessageSquare } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Link } from "react-router-dom";
+import PlaylistSkeleton from "@/components/skeletons/PlaylistSkeleton";
 
 const LeftSidebar = () => {
   // loading state for when we dynamically populate playlists
@@ -52,9 +53,7 @@ const LeftSidebar = () => {
         </div>
         <ScrollArea className="h-[calc(100vh-300px)] w-full rounded-md">
           <div className="space-y-2">
-            {/* show user playlists here dynamically */}
-            <p>album 1</p>
-            <p>album 2</p>
+            {isLoading ? <PlaylistSkeleton /> : <p>nothing to load</p>}
           </div>
         </ScrollArea>
       </div>
