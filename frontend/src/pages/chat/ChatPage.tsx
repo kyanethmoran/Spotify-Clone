@@ -1,5 +1,14 @@
+import TopBar from "@/components/TopBar";
+
 const ChatPage = () => {
-  return <div>ChatPage</div>;
+  return (
+    <>
+      <TopBar />
+      <div>
+        <p>chats go here</p>
+      </div>
+    </>
+  );
 };
 
 export default ChatPage;
