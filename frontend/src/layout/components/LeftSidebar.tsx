@@ -1,9 +1,12 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { HomeIcon, MessageSquare } from "lucide-react";
+import { HomeIcon, Library, MessageSquare } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
+  // loading state for when we dynamically populate playlists
+  const isLoading = true;
   return (
     <div className="h-full flex flex-col gap-2">
       {/* nav menu */}
@@ -41,7 +44,19 @@ const LeftSidebar = () => {
       </div>
       {/* lib section */}
       <div className="rounded-lg bg-zinc-900 p-4">
-        <div className="space-y-2">library bar</div>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center text-white px-2">
+            <Library className="size-5 mr-2" />
+            <span className="hidden md:inline">Playlists</span>
+          </div>
+        </div>
+        <ScrollArea className="h-[calc(100vh-300px)] w-full rounded-md">
+          <div className="space-y-2">
+            {/* show user playlists here dynamically */}
+            <p>album 1</p>
+            <p>album 2</p>
+          </div>
+        </ScrollArea>
       </div>
     </div>
   );
