@@ -8,6 +8,7 @@ import PlaylistSkeleton from "@/components/skeletons/PlaylistSkeleton";
 const LeftSidebar = () => {
   // loading state for when we dynamically populate playlists
   const isLoading = true;
+
   return (
     <div className="h-full flex flex-col gap-2">
       {/* nav menu */}
